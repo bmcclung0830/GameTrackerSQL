@@ -1,0 +1,34 @@
+<html lang="en">
+<body>
+{{^userName}}
+<form action="/login" method="post">
+   <input type="text" placeholder="Enter your Username" name="loginName"/>
+   <button type="button">Login</button>
+</form>
+{{/userName}}
+
+</br>
+
+{{#userName}}
+Welcome, {{.}}</br>
+{{/userName}}
+
+{{#userName}}
+<form action="/logout" method="post">
+   <button type="submit">Logout</button>
+</form>
+</br>
+<form action="/create-message" method="post">
+   <input type="text" placeholder="Enter your Message" name="messageText" size="35"/>
+   <input type="hidden" value="{{replyId}}" name="replyId">
+   <button type="submit">Post Message</button>
+</form>
+
+{{/userName}}
+
+{{#messages}}
+   <a href="/?replyId={{id}}">{{author}}: {{text}}</a></br>
+{{/messages}}
+
+</body>
+</html>
